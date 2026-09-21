@@ -1,0 +1,9 @@
+androidx.appcompact.example.updater-pngs-0 /Users/salim/salim_dev/plugin/nativeApp/updater/build/generated/res/pngs/debug
+androidx.appcompact.example.updater-updated_navigation_xml-1 /Users/salim/salim_dev/plugin/nativeApp/updater/build/generated/updated_navigation_xml/debug
+androidx.appcompact.example.updater-mergeDebugResources-2 /Users/salim/salim_dev/plugin/nativeApp/updater/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
+androidx.appcompact.example.updater-mergeDebugResources-3 /Users/salim/salim_dev/plugin/nativeApp/updater/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+androidx.appcompact.example.updater-debug-4 /Users/salim/salim_dev/plugin/nativeApp/updater/build/intermediates/merged_res/debug/mergeDebugResources
+androidx.appcompact.example.updater-debug-5 /Users/salim/salim_dev/plugin/nativeApp/updater/build/intermediates/packaged_res/debug/packageDebugResources
+androidx.appcompact.example.updater-debug-6 /Users/salim/salim_dev/plugin/nativeApp/updater/src/debug/res
+androidx.appcompact.example.updater-main-7 /Users/salim/salim_dev/plugin/nativeApp/updater/src/main/res
+gradleHome-0 /Users/salim/.gradle
