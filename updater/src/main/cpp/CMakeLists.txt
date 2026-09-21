@@ -5,7 +5,7 @@ project("updatecheck")
 add_library(
         updatecheck
         SHARED
-        update_check.cpp
+        native_updater.cpp
 )
 
 find_library(log-lib log)

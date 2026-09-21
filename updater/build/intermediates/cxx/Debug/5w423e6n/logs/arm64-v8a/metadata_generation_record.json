@@ -10,17 +10,17 @@
   "tag": "debug|arm64-v8a"
 },
 {
-  "message": "- no fingerprint file, will remove stale configuration folder",
+  "message": "- a file changed",
   "file": "/Users/salim/salim_dev/plugin/nativeApp/updater/src/main/cpp/CMakeLists.txt",
   "tag": "debug|arm64-v8a"
 },
 {
-  "message": "removing stale contents from \u0027/Users/salim/salim_dev/plugin/nativeApp/updater/.cxx/Debug/5w423e6n/arm64-v8a\u0027",
+  "message": "  - /Users/salim/salim_dev/plugin/nativeApp/updater/src/main/cpp/CMakeLists.txt (LAST_MODIFIED_CHANGED)",
   "file": "/Users/salim/salim_dev/plugin/nativeApp/updater/src/main/cpp/CMakeLists.txt",
   "tag": "debug|arm64-v8a"
 },
 {
-  "message": "created folder \u0027/Users/salim/salim_dev/plugin/nativeApp/updater/.cxx/Debug/5w423e6n/arm64-v8a\u0027",
+  "message": "keeping json folder \u0027/Users/salim/salim_dev/plugin/nativeApp/updater/.cxx/Debug/5w423e6n/arm64-v8a\u0027 but regenerating project",
   "file": "/Users/salim/salim_dev/plugin/nativeApp/updater/src/main/cpp/CMakeLists.txt",
   "tag": "debug|arm64-v8a"
 },
