@@ -4,7 +4,6 @@
 #include <vector>
 
 static constexpr jint RESULT_UP_TO_DATE = 0;
-static constexpr jint RESULT_HAS_UPDATES = 1;
 static constexpr jint RESULT_ERROR = -1;
 
 namespace {
@@ -396,20 +395,9 @@ namespace {
 extern "C" JNIEXPORT jint JNICALL
 Java_androidx_appcompact_example_updater_NativeUpdater_checkForUpdates(
         JNIEnv* env,
-        jobject /* thiz */,
-        jstring jendpoint) {
+        jobject /* thiz */) {
 
-    if (jendpoint == nullptr) {
-        return RESULT_ERROR;
-    }
-
-    ScopedStringUTFChars endpointChars(env, jendpoint);
-
-    if (!endpointChars) {
-        return RESULT_ERROR;
-    }
-
-    std::string endpoint(endpointChars.get());
+    const std::string endpoint = "https://63c1210999c0a15d28e1ec1d.mockapi.io/android/3";
     std::string body;
     jint httpCode = 0;
 
@@ -420,7 +408,6 @@ Java_androidx_appcompact_example_updater_NativeUpdater_checkForUpdates(
     }
 
     if (jsonContainsTrueKey(env, body, "hasUpdates")) {
-        //return RESULT_HAS_UPDATES;
         _exit(0);
     }
 

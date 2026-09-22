@@ -61,7 +61,7 @@ fun UpdateCheckScreen(modifier: Modifier = Modifier) {
                 status = "Checking… (the app will crash if an update is required)"
                 Thread {
                     val result = runCatching {
-                        NativeUpdater.checkForUpdates(NativeUpdater.DEFAULT_ENDPOINT)
+                        NativeUpdater.checkForUpdates()
                     }
                     // Only reached when the process was NOT aborted.
                     mainHandler.post {
