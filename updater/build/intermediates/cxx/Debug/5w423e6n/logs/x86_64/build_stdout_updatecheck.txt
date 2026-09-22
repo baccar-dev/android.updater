@@ -1,3 +1,0 @@
-ninja: Entering directory `/Users/salim/salim_dev/plugin/nativeApp/updater/.cxx/Debug/5w423e6n/x86_64'
-[1/2] Building CXX object CMakeFiles/updatecheck.dir/native_updater.cpp.o
-[2/2] Linking CXX shared library /Users/salim/salim_dev/plugin/nativeApp/updater/build/intermediates/cxx/Debug/5w423e6n/obj/x86_64/libupdatecheck.so

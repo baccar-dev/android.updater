@@ -1,5 +1,0 @@
-#!/bin/sh
-'/Users/salim/Library/Android/sdk/cmake/3.22.1/bin/ninja' \
-  '-C' \
-  '/Users/salim/salim_dev/plugin/nativeApp/updater/.cxx/Debug/5w423e6n/armeabi-v7a' \
-  'updatecheck'

@@ -1,4 +1,0 @@
-lib/armeabi-v7a/libupdatecheck.so->Project
-lib/arm64-v8a/libupdatecheck.so->Project
-lib/x86/libupdatecheck.so->Project
-lib/x86_64/libupdatecheck.so->Project
