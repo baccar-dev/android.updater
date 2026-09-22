@@ -7,7 +7,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompact.example.ui.theme.MyApplicationTheme
-import androidx.appcompact.example.updater.NativeUpdater
+import androidx.appcompat.updater.NativeUpdater
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

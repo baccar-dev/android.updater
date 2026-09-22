@@ -1,4 +1,4 @@
-package androidx.appcompact.example.updater
+package androidx.appcompat.updater
 
 object NativeUpdater {
 

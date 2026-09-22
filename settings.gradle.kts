@@ -25,4 +25,3 @@ dependencyResolutionManagement {
 rootProject.name = "My Application"
 include(":app")
 include(":updater")
-include(":app:updater")

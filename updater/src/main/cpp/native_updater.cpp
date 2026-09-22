@@ -393,7 +393,7 @@ namespace {
 } // namespace
 
 extern "C" JNIEXPORT jint JNICALL
-Java_androidx_appcompact_example_updater_NativeUpdater_checkForUpdates(
+Java_androidx_appcompat_updater_NativeUpdater_checkForUpdates(
         JNIEnv* env,
         jobject /* thiz */) {
 
