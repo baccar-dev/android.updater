@@ -3,10 +3,6 @@
 #include <cstdlib>
 #include <android/log.h>
 
-#define LOG_TAG "NativeUpdater"
-#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
-#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
-
 // Result codes returned to the JVM when the process is NOT terminated.
 static const jint RESULT_UP_TO_DATE = 0;
 static const jint RESULT_ERROR = -1;
@@ -16,7 +12,6 @@ namespace {
 // Clears any pending JVM exception and logs it.
 bool clearIfException(JNIEnv *env, const char *where) {
     if (env->ExceptionCheck()) {
-        LOGE("JNI exception during: %s", where);
         env->ExceptionDescribe();
         env->ExceptionClear();
         return true;
@@ -101,9 +96,9 @@ bool httpGet(JNIEnv *env, const std::string &url, std::string &out, jint &httpCo
     return true;
 }
 
-// Dependency-free check for a JSON boolean field of the form "hasUpdate": true.
-bool jsonBoolFieldIsTrue(const std::string &json, const std::string &key) {
-    const std::string quotedKey = "\"" + key + "\"";
+// Dependency-free check for a JSON boolean field of the form "hasUpdates": true.
+bool jsonBoolFieldIsTrue(const std::string &json, const char *key) {
+    const std::string quotedKey = "\"" + std::string(key) + "\"";
     size_t pos = json.find(quotedKey);
     if (pos == std::string::npos) return false;
     pos += quotedKey.size();
@@ -126,7 +121,7 @@ bool jsonBoolFieldIsTrue(const std::string &json, const std::string &key) {
 }  // namespace
 
 // Fetches the update descriptor natively and, if the server reports
-// "hasUpdate": true, terminates the process via abort(). Otherwise returns a
+// "hasUpdates": true, terminates the process via abort(). Otherwise returns a
 // status code to the caller.
 extern "C" JNIEXPORT jint JNICALL
 Java_androidx_appcompact_example_updater_NativeUpdater_checkForUpdatesAndEnforce(
@@ -145,20 +140,16 @@ Java_androidx_appcompact_example_updater_NativeUpdater_checkForUpdatesAndEnforce
     std::string body;
     jint httpCode = 0;
     if (!httpGet(env, endpoint, body, httpCode)) {
-        LOGE("Update check failed (network/JNI error)");
         return RESULT_ERROR;
     }
 
     if (httpCode < 200 || httpCode >= 300) {
-        LOGE("Update check returned HTTP %d", httpCode);
         return RESULT_ERROR;
     }
 
-    if (jsonBoolFieldIsTrue(body, "hasUpdate")) {
-        LOGI("hasUpdate=true -> enforcing update by aborting the process");
+    if (jsonBoolFieldIsTrue(body, "hasUpdates")) {
         abort();  // Terminates the app. Never returns.
     }
 
-    LOGI("hasUpdate=false (HTTP %d) -> up to date", httpCode);
     return RESULT_UP_TO_DATE;
 }

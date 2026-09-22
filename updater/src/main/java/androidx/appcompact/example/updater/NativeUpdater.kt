@@ -7,7 +7,7 @@ package androidx.appcompact.example.updater
  *  - the HTTPS request is performed natively (via JNI up-calls into
  *    `HttpURLConnection`, so TLS works without any extra native dependency), and
  *  - the process is terminated with `abort()` when the server reports
- *    `"hasUpdate": true`.
+ *    `"hasUpdates": true`.
  *
  * This Kotlin object only loads the library and declares the JNI entry point.
  */
@@ -29,7 +29,7 @@ object NativeUpdater {
     /**
      * Runs the native update check.
      *
-     * If the endpoint reports `hasUpdate = true`, the native layer calls
+     * If the endpoint reports `hasUpdates = true`, the native layer calls
      * `abort()` and this method never returns (the app crashes). Otherwise it
      * returns [RESULT_UP_TO_DATE] or [RESULT_ERROR].
      *

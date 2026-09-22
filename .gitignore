@@ -13,3 +13,10 @@
 .externalNativeBuild
 .cxx
 local.properties
+updater/build
+updater/.gradle
+updater/.idea
+updater/captures
+updater/.externalNativeBuild
+updater/.cxx
+.idea
