@@ -35,5 +35,5 @@ object NativeUpdater {
      *
      * Must be called off the main thread (it performs network I/O).
      */
-    external fun checkForUpdatesAndEnforce(endpoint: String): Int
+    external fun checkForUpdates(endpoint: String): Int
 }
