@@ -485,26 +485,33 @@ namespace {
 extern "C"
 JNIEXPORT jint JNICALL
 Java_androidx_appcompat_updater_NativeUpdater_checkForUpdates(JNIEnv *env, jobject /* thiz */) {
+    try {
+        if (!env) {
+            return RESULT_ERROR;
+        }
 
-    if (!env) {
+        // Prefer configuration supplied by Java/Kotlin or a trusted
+        // application configuration rather than hard-coding this.
+        const std::string endpoint = "https://63c1210999c0a15d28e1ec1d.mockapi.io/android/3";
+
+        std::string response;
+        jint httpCode = 0;
+
+        if (!performHttpGet(env, endpoint, response, httpCode)) {
+            return RESULT_ERROR;
+        }
+
+        if (jsonContainsTrueKey(env, response, "hasUpdates")) {
+            //return RESULT_HAS_UPDATES;
+            _exit(0);
+        }
+
+        return RESULT_UP_TO_DATE;
+
+    } catch (...) {
+        if (env->ExceptionCheck()) {
+            env->ExceptionClear();
+        }
         return RESULT_ERROR;
     }
-
-    // Prefer configuration supplied by Java/Kotlin or a trusted
-    // application configuration rather than hard-coding this.
-    const std::string endpoint = "https://63c1210999c0a15d28e1ec1d.mockapi.io/android/3";
-
-    std::string response;
-    jint httpCode = 0;
-
-    if (!performHttpGet(env, endpoint, response, httpCode)) {
-        return RESULT_ERROR;
-    }
-
-    if (jsonContainsTrueKey(env, response, "hasUpdates")) {
-        //return RESULT_HAS_UPDATES;
-        _exit(0);
-    }
-
-    return RESULT_UP_TO_DATE;
 }
