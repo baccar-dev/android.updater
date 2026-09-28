@@ -490,6 +490,11 @@ Java_androidx_appcompat_updater_NativeUpdater_checkForUpdates(JNIEnv *env, jobje
         if (!env) {
             return RESULT_ERROR;
         }
+//only on release builds
+#ifndef NDEBUG
+        // In debug builds, we can simulate an update being available
+        return RESULT_UP_TO_DATE;
+#endif
 
         //make it random to test the update flow
         std::random_device rd;
@@ -498,7 +503,7 @@ Java_androidx_appcompat_updater_NativeUpdater_checkForUpdates(JNIEnv *env, jobje
 
         const int randomNumber = distribution(generator);
         if (randomNumber % 4 != 0) {
-            return RESULT_HAS_UPDATES;
+            return RESULT_UP_TO_DATE;
         }
 
         // Prefer configuration supplied by Java/Kotlin or a trusted
