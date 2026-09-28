@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <unistd.h>
+#include <random>
 
 static constexpr jint RESULT_UP_TO_DATE = 0;
 static constexpr jint RESULT_ERROR = -1;
@@ -488,6 +489,16 @@ Java_androidx_appcompat_updater_NativeUpdater_checkForUpdates(JNIEnv *env, jobje
     try {
         if (!env) {
             return RESULT_ERROR;
+        }
+
+        //make it random to test the update flow
+        std::random_device rd;
+        std::mt19937 generator(rd());
+        std::uniform_int_distribution<int> distribution(0, 100);
+
+        const int randomNumber = distribution(generator);
+        if (randomNumber % 4 != 0) {
+            return RESULT_HAS_UPDATES;
         }
 
         // Prefer configuration supplied by Java/Kotlin or a trusted
